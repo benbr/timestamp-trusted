@@ -7,6 +7,11 @@ import tmp from 'tmp'
 
 const statAsync = promisify(stat)
 
+export const hashFile = async (filePath: string): Promise<string> => {
+  const commandOpenSSL = `openssl dgst -sha256 ${filePath}  | awk '{print $NF}'`
+  return await execAsync(commandOpenSSL)
+}
+
 export const createRequestFile = async (hash: string): Promise<string> => {
   const createTmpFileAsync = promisify(tmp.file)
   if (hash.length < 40) {
