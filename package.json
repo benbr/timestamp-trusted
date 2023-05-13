@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.ts",
     "test": "jest --watch",
     "build": "tsc",
+    "prepare": "npm run build",
     "prepublish": "npm run build"
   },
   "repository": {
